@@ -1,4 +1,8 @@
 <%= form_for(@consumable_type) do |f| %>
+  <%# this can be implemented with SimpleFormBuilder %>
+  <%#= f.error_messages %>
+  <%#= display_base_errors resource %>
+
   <% if @consumable_type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@consumable_type.errors.count, "error") %> prohibited this consumable_type from being saved:</h2>

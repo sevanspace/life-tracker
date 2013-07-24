@@ -1,4 +1,7 @@
 <%= form_for(@consumable_object) do |f| %>
+  <%#= f.error_messages %>
+  <%#= display_base_errors resource %>
+
   <% if @consumable_object.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@consumable_object.errors.count, "error") %> prohibited this consumable_object from being saved:</h2>
