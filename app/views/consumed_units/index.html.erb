@@ -1,0 +1,31 @@
+<h1>Listing consumed_units</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Unit</th>
+      <th>Consumable type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consumed_units.each do |consumed_unit| %>
+      <tr>
+        <td><%= consumed_unit.amount %></td>
+        <td><%= consumed_unit.unit %></td>
+        <td><%= consumed_unit.consumable_type %></td>
+        <td><%= link_to 'Show', consumed_unit %></td>
+        <td><%= link_to 'Edit', edit_consumed_unit_path(consumed_unit) %></td>
+        <td><%= link_to 'Destroy', consumed_unit, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Consumed unit', new_consumed_unit_path %>

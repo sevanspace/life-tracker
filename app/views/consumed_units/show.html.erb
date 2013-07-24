@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @consumed_unit.amount %>
+</p>
+
+<p>
+  <strong>Unit:</strong>
+  <%= @consumed_unit.unit %>
+</p>
+
+<p>
+  <strong>Consumable type:</strong>
+  <%= @consumed_unit.consumable_type %>
+</p>
+
+<%= link_to 'Edit', edit_consumed_unit_path(@consumed_unit) %> |
+<%= link_to 'Back', consumed_units_path %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130723030147) do
+ActiveRecord::Schema.define(version: 20130723065159) do
 
   create_table "consumable_objects", force: true do |t|
     t.integer  "consumable_type_id"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20130723030147) do
     t.string   "unit"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "name"
   end
 
   create_table "consumable_types", force: true do |t|

@@ -1,0 +1,27 @@
+<h1>Listing consumable_types</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consumable_types.each do |consumable_type| %>
+      <tr>
+        <td><%= consumable_type.name %></td>
+        <td><%= link_to 'Show', consumable_type %></td>
+        <td><%= link_to 'Edit', edit_consumable_type_path(consumable_type) %></td>
+        <td><%= link_to 'Destroy', consumable_type, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Consumable type', new_consumable_type_path %>

@@ -1,0 +1,31 @@
+<h1>Listing consumable_objects</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Amount</th>
+      <th>Unit</th>
+      <th>Consumable type</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consumable_objects.each do |consumable_object| %>
+      <tr>
+        <td><%= consumable_object.amount %></td>
+        <td><%= consumable_object.unit %></td>
+        <td><%= consumable_object.consumable_type %></td>
+        <td><%= link_to 'Show', consumable_object %></td>
+        <td><%= link_to 'Edit', edit_consumable_object_path(consumable_object) %></td>
+        <td><%= link_to 'Destroy', consumable_object, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Consumable object', new_consumable_object_path %>

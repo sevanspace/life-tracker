@@ -1,0 +1,34 @@
+<%= form_for(@consumable_object) do |f| %>
+  <% if @consumable_object.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@consumable_object.errors.count, "error") %> prohibited this consumable_object from being saved:</h2>
+
+      <ul>
+      <% @consumable_object.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :amount %><br>
+    <%= f.text_field :amount %>
+  </div>
+  <div class="field">
+    <%= f.label :unit %><br>
+    <%= f.text_field :unit %>
+  </div>
+  <div class="field">
+    <%= f.label :consumable_type %><br>
+    <%= f.collection_select(:consumable_type_id, ConsumableType.all, :id, :name, {include_blank: true}) %>
+    <%= link_to 'New Type', new_consumable_type_path %>
+
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

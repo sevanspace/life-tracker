@@ -1,0 +1,21 @@
+<%= form_for(@consumable_type) do |f| %>
+  <% if @consumable_type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@consumable_type.errors.count, "error") %> prohibited this consumable_type from being saved:</h2>
+
+      <ul>
+      <% @consumable_type.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_field :name %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

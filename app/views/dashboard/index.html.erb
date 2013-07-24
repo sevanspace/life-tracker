@@ -1,0 +1,50 @@
+<h1>Dashboard</h1>
+<% if notice && notice != '' %>
+	<p id="notice"><%= notice %></p>
+<% end %>
+<div class="consumable-object-panel" >
+	<% ConsumableObject.all.each do |obj| %>
+	   <div class="consumable-object-button">
+ 	     <%= link_to "#{obj.name}", consumed_units_path(:consumed_unit => {:unit => obj.unit, :amount => obj.amount, :consumable_type_id => obj.consumable_type.id}), :method => :post, :id => "consumable-object #{obj.name}" %>
+ 	   </div>
+	<% end %>
+</div>
+
+<div class="consumed-unit-panel">
+	<div class="all-consumed-units">
+		<table>
+			<tr>
+				<td>Type</td>
+				<td>Amount</td>
+				<td>Unit</td>
+				<td>Time</td>
+			</tr>
+			<% ConsumedUnit.all.each do |unit| %>
+			<tr>
+				<td><%= unit.consumable_type.name %></td>
+				<td><%= unit.amount %></td>
+				<td><%= unit.unit %></td>
+				<td><%= unit.created_at %></td>
+			</tr>
+			<% end %>
+		</table>
+	</div>
+
+	<div class="consumed-unit-data">
+		<table>
+			<tr>
+				<td>Type</td>
+				<td>Total Consumed</td>
+			</tr>
+		<% ConsumableType.all.each do |type| %>
+		    <tr>
+		    	<td><%= type.name %></td>
+		    	<td><%= ConsumedUnit.sum(:amount, :conditions => {:consumable_type_id => type.id}) %></td>
+		    </tr>
+		<% end %>
+	    </table>
+	</div>
+</div>
+
+<%= link_to 'New ConsumableType', new_consumable_type_path %>
+<%= link_to 'New ConsumableObject', new_consumable_object_path %>

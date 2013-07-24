@@ -1,0 +1,2 @@
+module ConsumableObjectsHelper
+end
