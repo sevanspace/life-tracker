@@ -43,3 +43,6 @@ end
 
 # Use debugger
 # gem 'debugger', group: [:development, :test]
+
+#add twitter bootstrap
+gem 'bootstrap-sass'
