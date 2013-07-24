@@ -29,21 +29,33 @@
 			<% end %>
 		</table>
 	</div>
+</div>
 
-	<div class="consumed-unit-data">
-		<table>
-			<tr>
-				<td>Type</td>
-				<td>Total Consumed</td>
-			</tr>
-		<% ConsumableType.all.each do |type| %>
-		    <tr>
-		    	<td><%= type.name %></td>
-		    	<td><%= ConsumedUnit.sum(:amount, :conditions => {:consumable_type_id => type.id}) %></td>
-		    </tr>
-		<% end %>
-	    </table>
-	</div>
+<div class="consumed-unit-data">
+	<table>
+		<tr>
+			<td>Type</td>
+			<td>Total Consumed</td>
+		</tr>
+	<% ConsumableType.all.each do |type| %>
+	    <tr>
+	    	<td><%= type.name %></td>
+	    	<td><%= ConsumedUnit.sum(:amount, :conditions => {:consumable_type_id => type.id}) %></td>
+	    </tr>
+	<% end %>
+    </table>
+</div>
+
+<div id="consumed-unit-chart">
+	<p>Chart:</p>
+	<script type="text/javascript" charset="utf-8">
+	//$(function () {
+//	var r = Raphael(10, 50, 640, 480);
+//	r.piechart(320, 240, 100, [55, 20, 13, 32, 5, 1, 2]);
+//	});
+	</script>
+
+	<div id="canvas_container"></div>  
 </div>
 
 <%= link_to 'New ConsumableType', new_consumable_type_path %>

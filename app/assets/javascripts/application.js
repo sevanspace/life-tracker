@@ -14,6 +14,8 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap
+//= require raphael
+//= require g.raphael
 //= require_tree .
 
 $('consumable-unit').click(function (event) {
