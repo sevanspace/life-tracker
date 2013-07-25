@@ -12,4 +12,20 @@ module ApplicationHelper
     html.html_safe
   end
 
+  def consumed_by_hour (type)
+    result = []
+    for hr in 0..24
+      total = ConsumedUnit.all.select {|cu| cu.created_at.hour == hr}
+      result[hr] = total.count
+    end
+    result
+  end
+
+  def consumued_time_hash (type)
+    result = Hash.new
+    ConsumedUnit.all.each do |cu|
+    end
+  end
+
 end
+

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130723065159) do
+ActiveRecord::Schema.define(version: 20130725181735) do
 
   create_table "consumable_objects", force: true do |t|
     t.integer  "consumable_type_id"
@@ -30,10 +30,13 @@ ActiveRecord::Schema.define(version: 20130723065159) do
 
   create_table "consumed_units", force: true do |t|
     t.integer  "consumable_type_id"
-    t.decimal  "amount",             precision: 5, scale: 2
+    t.decimal  "amount",               precision: 5, scale: 2
     t.string   "unit"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "consumable_object_id"
   end
+
+  add_index "consumed_units", ["consumable_object_id"], name: "index_consumed_units_on_consumable_object_id"
 
 end
