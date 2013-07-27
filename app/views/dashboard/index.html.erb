@@ -49,6 +49,15 @@
 
 </div>
 
+<%= raw("<div class=\'consumable-type-data\' data-values=\'" + @type_colors.to_json.html_safe + "\'></div>" )%>
+
+<div class="timeline">
+	<h>Timeline</h>
+	<%= raw("<div class=\'consumed-unit-timeline-data\' data-values=\'" + @consumed_today.to_json.html_safe + "\'></div>" )%>
+	<div class="canvas_container" id="consumed-unit-timeline"></div>
+</div>
+
+
 <% ConsumableObject.all.each do |co| %>
 	<div class="consumable-object-chart">
 		<div class="consumable-object-hourly-data" data-values='<%= @consumable_objects_consumed_by_hour[co.name] %>' data-name="<%= co.name %>"></div>
@@ -56,8 +65,6 @@
 		<div class="canvas_container" id="<%= co.name %>_consumed_units_chart"></div>
 	</div>
 <% end %>
-
-<%= @consumable_objects_by_day %>
 
 <% ConsumableObject.all.each do |co| %>
 	<div class="consumable-object-histogram">

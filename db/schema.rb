@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130725181735) do
+ActiveRecord::Schema.define(version: 20130727192712) do
 
   create_table "consumable_objects", force: true do |t|
     t.integer  "consumable_type_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20130725181735) do
     t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "color",      default: "black"
   end
 
   create_table "consumed_units", force: true do |t|

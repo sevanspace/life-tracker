@@ -9,6 +9,10 @@ class DashboardController < ApplicationController
 
   	end
     @first_date_consumed = {:year => time_created(ConsumableObject.first).year, :month => time_created(ConsumableObject.first).month, :day => time_created(ConsumableObject.first).day}
+
+    @consumed_today = consumed_today_hash
+
+    @type_colors = type_colors()
   end
 
 
@@ -47,8 +51,33 @@ class DashboardController < ApplicationController
     result
   end
 
+  def units_consumed_today
+    ConsumedUnit.all.select {|cu| time_created(cu).day == Date.today.day && time_created(cu).month == Date.today.month && time_created(cu).year == Date.today.year}
+  end
+
+  def consumed_today_hash
+    result = []
+    units_consumed_today().each do |cu|
+      result.push({
+        :type => cu.consumable_type.name,
+        :object => (cu.consumable_object && cu.consumable_object.name),
+        :hour => time_created(cu).hour,
+        :min => time_created(cu).min,
+        :sec => time_created(cu).sec
+      })
+    end
+    result
+  end
+
   def time_created (record)
     record.created_at.in_time_zone('Central Time (US & Canada)')
   end
 
+  def type_colors
+    result = {}
+    ConsumableType.all.each do |ct|
+      result[ct.name] = ct.color
+    end
+    result
+  end
 end

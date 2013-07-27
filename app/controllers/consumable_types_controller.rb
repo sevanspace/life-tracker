@@ -69,6 +69,6 @@ class ConsumableTypesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consumable_type_params
-      params.require(:consumable_type).permit(:name)
+      params.require(:consumable_type).permit(:name, :color)
     end
 end
