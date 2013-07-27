@@ -16,6 +16,7 @@
 //= require bootstrap
 //= require raphael
 //= require g.raphael
+//= require g.line
 //= require_tree .
 
 $('consumable-unit').click(function (event) {

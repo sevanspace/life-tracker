@@ -58,7 +58,7 @@ class ConsumedUnitsController < ApplicationController
   def destroy
     @consumed_unit.destroy
     respond_to do |format|
-      format.html { redirect_to consumed_units_url }
+      format.html { redirect_to '/', notice: 'Consumed unit was DELETED.' }
       format.json { head :no_content }
     end
   end
