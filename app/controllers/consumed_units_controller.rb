@@ -71,6 +71,6 @@ class ConsumedUnitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def consumed_unit_params
-      params.require(:consumed_unit).permit(:amount, :unit, :consumable_type_id)
+      params.require(:consumed_unit).permit(:amount, :unit, :consumable_type_id, :consumable_object_id)
     end
 end

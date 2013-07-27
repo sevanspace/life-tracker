@@ -41,6 +41,27 @@ window.onload = function() {
 
         console.log('histogram values = ' + values);
 
-        
+        var chart_values = [];
+        var chart_labels = [];
+
+        var first_date = $(elem).data('first');
+        console.log('first_date = ' + first_date);
+        var first = new Date();
+        first.setFullYear(first_date["year"], first_date["month"] - 1, first_date["day"]);
+        var now = new Date(Date.now());
+        var daysOfYear = [];
+        for (var d = new Date(first); d <= now; d.setDate(d.getDate() + 1)) {
+            if (d.getFullYear() in values &&
+                (d.getMonth() + 1) in values[d.getFullYear()] &&
+                d.getDate() in values[d.getFullYear()][d.getMonth() + 1]) {
+                chart_values.push(values[d.getFullYear()][d.getMonth() + 1][d.getDate()]);
+            } else {
+                chart_values.push(0);
+            }
+            chart_labels.push((d.getMonth() + 1) + "/" + d.getDate())
+        }
+
+        var by_day_chart = paper.barchart(20, 20, 600, 100, [chart_values]).label([chart_labels], true);
+
     });
 }  

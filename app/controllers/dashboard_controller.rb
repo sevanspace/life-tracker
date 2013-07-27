@@ -6,11 +6,15 @@ class DashboardController < ApplicationController
   	ConsumableObject.all.each do |co|
   		@consumable_objects_consumed_by_hour[co.name] = consumed_by_hour(co.consumable_type.name)
       @consumable_objects_by_day[co.name] = consumed_by_day(co.consumable_type.name)
+
   	end
+    @first_date_consumed = {:year => time_created(ConsumableObject.first).year, :month => time_created(ConsumableObject.first).month, :day => time_created(ConsumableObject.first).day}
   end
 
 
 #helpers
+
+#TODO: get separate counts for Type (continuous) and Object (discrete); aka how much water vs how many water_bottles
 
   def consumed_by_hour (type)
     result = []

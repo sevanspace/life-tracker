@@ -5,7 +5,7 @@
 <div class="consumable-object-panel" >
 	<% ConsumableObject.all.each do |obj| %>
 	   <div class="consumable-object-button">
- 	     <%= link_to "#{obj.name}", consumed_units_path(:consumed_unit => {:unit => obj.unit, :amount => obj.amount, :consumable_type_id => obj.consumable_type.id}), :method => :post, :id => "consumable-object #{obj.name}" %>
+ 	     <%= link_to "#{obj.name}", consumed_units_path(:consumed_unit => {:unit => obj.unit, :amount => obj.amount, :consumable_type_id => obj.consumable_type.id, :consumable_object_id => obj.id}), :method => :post, :id => "consumable-object #{obj.name}" %>
  	   </div>
 	<% end %>
 </div>
@@ -61,10 +61,7 @@
 
 <% ConsumableObject.all.each do |co| %>
 	<div class="consumable-object-histogram">
-
-		<%#= content_tag(:div, "", {:class => "consumable-object-histogram-data", "data-values" => ("'" + @consumable_objects_by_day[co.name].to_json + "'").html_safe, "data-name" => co.name}) %>
-
-		<%= raw ("<div class=\'consumable-object-histogram-data\' data-values=\'" + @consumable_objects_by_day[co.name].to_json.html_safe + "\' data-name=\'" + co.name + "\'></div>") %>
+		<%= raw ("<div class=\'consumable-object-histogram-data\' data-values=\'" + @consumable_objects_by_day[co.name].to_json.html_safe + "\' data-name=\'" + co.name + "\' data-first=\'" + @first_date_consumed.to_json.html_safe + "\'></div>") %>
 		<h><%= co.name %></h>
 		<div class="canvas_container" id="<%= co.name %>_histogram"></div>
 	</div>
