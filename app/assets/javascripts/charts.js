@@ -70,9 +70,16 @@ window.onload = function() {
 
         var type_colors = $('.consumable-type-data').data('values');
 
+        var first_hr = $(elem).data('first');
+        var last_hr = $(elem).data('last');
+        var first_cutoff = first_hr - 1; //for 24-hr mode, first_cutoff = 0
+        var last_cutoff = last_hr + 1;   //for 24-hr mode, last_cutoff = 24
+
         var timeline_length = 500;
         var node_radius = 5;
         var y = 20;
+
+        console.log("lasthr - firsthr: " + (last_hr - first_hr));
 
         var line = paper.path("M" + y + " " + y + "H" + timeline_length + " z");
         var node;
@@ -81,7 +88,7 @@ window.onload = function() {
 
         for (var i=0, len=values.length; i < len; i++) {
             val = values[i];
-            x = ~~(((60*60*val["hour"] + 60*val["min"] + val["sec"]) * timeline_length ) / (60*60*24));
+            x = ~~( ( (60*60* (val["hour"] - first_cutoff) + 60*val["min"] + val["sec"]) * timeline_length ) / (60*60*(last_cutoff - first_cutoff)));
             node = paper.circle(x, y, node_radius);
             node.attr("fill", Raphael.getRGB(type_colors[val["type"]]));
             console.log("node(" + x + ", " + y + ", " + node_radius + ")");

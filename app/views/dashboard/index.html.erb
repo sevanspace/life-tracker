@@ -53,7 +53,7 @@
 
 <div class="timeline">
 	<h>Timeline</h>
-	<%= raw("<div class=\'consumed-unit-timeline-data\' data-values=\'" + @consumed_today.to_json.html_safe + "\'></div>" )%>
+	<%= raw("<div class=\'consumed-unit-timeline-data\' data-values=\'" + @consumed_today.to_json.html_safe + "\' data-first=\'" + @first_hr.to_s + "\' data-last=\'" + @last_hr.to_s + "\'></div>")%>
 	<div class="canvas_container" id="consumed-unit-timeline"></div>
 </div>
 

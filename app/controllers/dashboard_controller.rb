@@ -1,4 +1,5 @@
 class DashboardController < ApplicationController
+  before_filter :units_consumed_today, :only => [:index]
 
   def index
   	@consumable_objects_consumed_by_hour = {}
@@ -13,6 +14,9 @@ class DashboardController < ApplicationController
     @consumed_today = consumed_today_hash
 
     @type_colors = type_colors()
+
+    @first_hr = time_created(@units_consumed_today.first).hour
+    @last_hr = time_created(@units_consumed_today.last).hour
   end
 
 
@@ -52,12 +56,13 @@ class DashboardController < ApplicationController
   end
 
   def units_consumed_today
-    ConsumedUnit.all.select {|cu| time_created(cu).day == Date.today.day && time_created(cu).month == Date.today.month && time_created(cu).year == Date.today.year}
+    @units_consumed_today = ConsumedUnit.all.select {|cu| time_created(cu).day == Date.today.day && time_created(cu).month == Date.today.month && time_created(cu).year == Date.today.year}.sort_by! {|c| c.created_at}
+
   end
 
   def consumed_today_hash
     result = []
-    units_consumed_today().each do |cu|
+    @units_consumed_today.each do |cu|
       result.push({
         :type => cu.consumable_type.name,
         :object => (cu.consumable_object && cu.consumable_object.name),
