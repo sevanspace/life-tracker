@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @rescue_time_chart.title %>
+</p>
+
+<p>
+  <strong>Key:</strong>
+  <%= @rescue_time_chart.key %>
+</p>
+
+<p>
+  <strong>Show:</strong>
+  <%= @rescue_time_chart.show %>
+</p>
+
+<p>
+  <strong>Width:</strong>
+  <%= @rescue_time_chart.width %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @rescue_time_chart.height %>
+</p>
+
+<p>
+  <strong>Script:</strong>
+  <%= @rescue_time_chart.script %>
+</p>
+
+<%= link_to 'Edit', edit_rescue_time_chart_path(@rescue_time_chart) %> |
+<%= link_to 'Back', rescue_time_charts_path %>

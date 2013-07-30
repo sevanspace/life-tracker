@@ -74,5 +74,15 @@
 	</div>
 <% end %>
 
+<div class="rescue-time-charts">
+	<% RescueTimeChart.all.each do |rct| %>
+	    <% if rct.show %>
+	        <%= raw(rct.script) %>
+	    <% end %>
+	<% end %>
+</div>
+
+<%= link_to 'New RescueTimeChart', new_rescue_time_chart_path %>
+
 <%= link_to 'New ConsumableType', new_consumable_type_path %>
 <%= link_to 'New ConsumableObject', new_consumable_object_path %>

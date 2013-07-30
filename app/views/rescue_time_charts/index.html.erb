@@ -1,0 +1,37 @@
+<h1>Listing rescue_time_charts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Key</th>
+      <th>Show</th>
+      <th>Width</th>
+      <th>Height</th>
+      <th>Script</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @rescue_time_charts.each do |rescue_time_chart| %>
+      <tr>
+        <td><%= rescue_time_chart.title %></td>
+        <td><%= rescue_time_chart.key %></td>
+        <td><%= rescue_time_chart.show %></td>
+        <td><%= rescue_time_chart.width %></td>
+        <td><%= rescue_time_chart.height %></td>
+        <td><%= rescue_time_chart.script %></td>
+        <td><%= link_to 'Show', rescue_time_chart %></td>
+        <td><%= link_to 'Edit', edit_rescue_time_chart_path(rescue_time_chart) %></td>
+        <td><%= link_to 'Destroy', rescue_time_chart, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Rescue time chart', new_rescue_time_chart_path %>

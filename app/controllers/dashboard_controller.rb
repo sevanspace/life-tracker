@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  before_filter :units_consumed_today, :only => [:index]
+  before_filter :units_consumed_today
 
   def index
   	@consumable_objects_consumed_by_hour = {}
@@ -15,8 +15,8 @@ class DashboardController < ApplicationController
 
     @type_colors = type_colors()
 
-    @first_hr = time_created(@units_consumed_today.first).hour
-    @last_hr = time_created(@units_consumed_today.last).hour
+    @first_hr = if @units_consumed_today.empty? then 1 else time_created(@units_consumed_today.first).hour end
+    @last_hr = if @units_consumed_today.empty? then 23 else time_created(@units_consumed_today.last).hour end
   end
 
 

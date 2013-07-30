@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  title: MyString
+  key: MyString
+  show: false
+  width: 1
+  height: 1
+  script: MyText
+
+two:
+  title: MyString
+  key: MyString
+  show: false
+  width: 1
+  height: 1
+  script: MyText

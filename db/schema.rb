@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130727192712) do
+ActiveRecord::Schema.define(version: 20130730040723) do
 
   create_table "consumable_objects", force: true do |t|
     t.integer  "consumable_type_id"
@@ -39,5 +39,16 @@ ActiveRecord::Schema.define(version: 20130727192712) do
   end
 
   add_index "consumed_units", ["consumable_object_id"], name: "index_consumed_units_on_consumable_object_id"
+
+  create_table "rescue_time_charts", force: true do |t|
+    t.string   "title"
+    t.string   "key"
+    t.boolean  "show"
+    t.integer  "width"
+    t.integer  "height"
+    t.text     "script"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

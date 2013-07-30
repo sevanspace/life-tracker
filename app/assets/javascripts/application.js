@@ -18,8 +18,9 @@
 //= require g.raphael
 //= require g.line
 //= require_tree .
+j = jQuery.noConflict();  //replaces $ because it's used by RescueTime's libraries
 
-$('consumable-unit').click(function (event) {
+j('consumable-unit').click(function (event) {
 	alert('Consumed!');
 });
 
