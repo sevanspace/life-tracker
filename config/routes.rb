@@ -1,6 +1,5 @@
 LifeTracker::Application.routes.draw do
 
-
   resources :rescue_time_charts
 
   resources :consumable_types

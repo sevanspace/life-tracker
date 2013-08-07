@@ -1,12 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<%#= @dashboard.name %><br>
-<%#= @dashboard.widgets %>
-<br><%= @dashboard.name %>
-<br>
-<% @dashboard.showable_widgets.each do |w| %>
-   <br><%= render :partial => "charts/" + w.to_s, :locals => {:d => @dashboard} %>
-<% end %>
+<p>
+  <strong>Name:</strong>
+  <%= @dashboard.name %>
+</p>
+
+<p>
+  <strong>Widgets:</strong>
+  <%= @dashboard.widgets %>
+</p>
+
+<p>
+  <strong>Show:</strong>
+  <%= @dashboard.show %>
+</p>
 
 <%= link_to 'Edit', edit_dashboard_path(@dashboard) %> |
-<%= link_to 'Home', dashboards_path %>
+<%= link_to 'Back', dashboards_path %>
