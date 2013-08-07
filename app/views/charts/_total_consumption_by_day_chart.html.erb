@@ -1,0 +1,7 @@
+<% ConsumableObject.all.each do |co| %>
+	<div class="consumable-object-histogram">
+		<%= raw ("<div class=\'consumable-object-histogram-data\' data-values=\'" + consumable_objects_by_day[co.name].to_json.html_safe + "\' data-name=\'" + co.name + "\' data-first=\'" + first_date_consumed.to_json.html_safe + "\'></div>") %>
+		<h><%= co.name %> Daily Totals since <%= first_date_consumed[:month].to_s + "/" + first_date_consumed[:day].to_s + "/" + first_date_consumed[:year].to_s %></h>
+		<div class="canvas_container" id="<%= co.name %>_histogram"></div>
+	</div>
+<% end %>

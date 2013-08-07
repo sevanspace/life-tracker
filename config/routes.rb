@@ -1,12 +1,15 @@
 LifeTracker::Application.routes.draw do
 
+
   resources :rescue_time_charts
 
   resources :consumable_types
   resources :consumable_objects
   resources :consumed_units
 
-  root 'dashboard#index'
+  resources :dashboards
+
+  root 'main#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

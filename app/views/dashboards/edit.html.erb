@@ -1,0 +1,11 @@
+<h1>Dashboard Control Panel</h1>
+
+<% Dashboard.all.each do |d| %>
+	<%= link_to d.name, edit_dashboard_path(d) %>
+<% end %>
+<br><%= link_to 'Show', @dashboard %>
+<br><%= link_to 'Destroy this dashboard', @dashboard, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<%= render 'form' %>
+
+

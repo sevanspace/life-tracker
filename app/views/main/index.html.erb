@@ -1,0 +1,14 @@
+<h1>Dashboard</h1>
+<% if notice && notice != '' %>
+	<p id="notice"><%= notice %></p>
+<% end %>
+
+<%# separate out into DRY code %>
+<%= raw("<div class=\'consumable-type-data\' data-values=\'" + @type_colors.to_json.html_safe + "\'></div>" )%>
+
+<% @dashboard_data.each do |name, widget_data| %>
+	<br><%= name %>
+	<% widget_data.each do |widget_id, data| %>
+	    <br><%= render :partial => "charts/" + widget_id.to_s, :locals => data %>
+	<% end %>
+<% end %>

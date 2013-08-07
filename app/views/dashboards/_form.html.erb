@@ -1,0 +1,75 @@
+<%= form_for(@dashboard) do |f| %>
+
+
+  <% if @dashboard.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@dashboard.errors.count, "error") %> prohibited this dashboard from being saved:</h2>
+
+      <ul>
+      <% @dashboard.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	<%= f.label :name %><br>
+	<%= f.text_field :name %>
+  </div>
+
+  <div class="field">
+	<%= f.label :show %><br>
+	<%= f.check_box :show %>
+  </div>
+
+  <div class="available-widgets-table" />
+	<table>
+		<tr>
+			<td>Widget</td>
+			<td>Show?</td>
+			<td>Order</td>
+		</tr>
+
+		<br><%# .available_widgets.each do |aw| %><br>
+		<%#= aw %>
+		<%# end %>
+
+		<%# Dashboard.available_widgets.each do |id, name| %>
+		    
+
+
+		   <% Dashboard.available_widgets.each do |key, name| %>
+		       <p><%= name %></p>
+		       <li>
+		       <%= check_box_tag "widgets[#{key}]", '1', @widgets.has_key?(key) %>
+		       <%= label_tag "widgets[#{key}]", name %>
+		       </li>
+		       <%#= f.check_box :widgets, {}, :checked_value => key %>
+		   <% end %>
+		
+		<%# end %>
+
+
+		<% if false #@dashboard.available_widgets.count > 1 %>
+
+		    <%= f.fields_for :display_widgets, Dashboard.available_widgets do |dw| %>
+		    <tr>
+		    	<td>FIRST<%#= dw.name %></td>
+		    	<td> 
+		    		<%#= dw.check_box :new_widget, checked: @dashboard.display_widgets[:new_widget] == "1" %>
+		    	</td>
+		    	<td>?</td>
+		    </tr>
+		    
+		    <% end %>
+		<% end %>
+		
+	</table>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>

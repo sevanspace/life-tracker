@@ -1,0 +1,15 @@
+<div class="total-consumption-table">
+	<table>
+		<tr>
+			<td>Type</td>
+			<td>Total Consumed</td>
+		</tr>
+	<% ConsumableType.all.each do |type| %>
+	    <tr>
+	    	<td><%= type.name %></td>
+	    	<td><%= ConsumedUnit.sum(:amount, :conditions => {:consumable_type_id => type.id}).round(2) %></td>
+	    </tr>
+	<% end %>
+    </table>
+
+</div>

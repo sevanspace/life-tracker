@@ -1,0 +1,7 @@
+<% ConsumableObject.all.each do |co| %>
+	<div class="consumable-object-chart">
+		<div class="consumable-object-hourly-data" data-values='<%= consumable_objects_consumed_by_hour[co.name] %>' data-name="<%= co.name %>"></div>
+		<h><%= co.name %> Historical Hourly Consumption</h>
+		<div class="canvas_container" id="<%= co.name %>_consumed_units_chart"></div>
+	</div>
+<% end %>

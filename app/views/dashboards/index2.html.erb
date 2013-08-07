@@ -1,0 +1,45 @@
+<h1>Dashboard</h1>
+<% if notice && notice != '' %>
+	<p id="notice"><%= notice %></p>
+<% end %>
+
+<div class="edit-dashboards-button" >
+	<% if Dashboard.count > 0 %>
+	   <%=link_to Dashboard.first.name, edit_dashboard_path(Dashboard.first) %>
+	<% end %>
+</div>
+
+<%# consumable_objects_buttons %>
+
+
+<%# consumed_units_table %>
+
+
+<%# total_consumption_table %>
+
+<%# done %>
+<%= raw("<div class=\'consumable-type-data\' data-values=\'" + @type_colors.to_json.html_safe + "\'></div>" )%>
+
+
+<%# consumed_today_timeline %>
+
+<%# hourly_consumed_object_histogram %>
+
+
+<%# total_consumption_by_day_chart %>
+
+
+
+<%# rescue time charts %>
+<div class="rescue-time-charts">
+	<% RescueTimeChart.all.each do |rct| %>
+	    <% if rct.show %>
+	        <%= raw(process_rescue_time_script(rct)) %>
+	    <% end %>
+	<% end %>
+</div>
+
+<%= link_to 'New RescueTimeChart', new_rescue_time_chart_path %>
+
+<%= link_to 'New ConsumableType', new_consumable_type_path %>
+<%= link_to 'New ConsumableObject', new_consumable_object_path %>

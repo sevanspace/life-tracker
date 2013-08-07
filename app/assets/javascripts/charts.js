@@ -72,8 +72,8 @@ window.onload = function() {
 
         var first_hr = j(elem).data('first');
         var last_hr = j(elem).data('last');
-        var first_cutoff = first_hr - 1; //for 24-hr mode, first_cutoff = 0
-        var last_cutoff = last_hr + 1;   //for 24-hr mode, last_cutoff = 24
+        var first_cutoff = first_hr; //to see full 24-hrs, first_cutoff = 0
+        var last_cutoff = last_hr + 1;   //to see full 24-hrs, last_cutoff = 24
 
         var timeline_length = 500;
         var node_radius = 5;

@@ -4,7 +4,7 @@ class ConsumedUnitsController < ApplicationController
   # GET /consumed_units
   # GET /consumed_units.json
   def index
-    @consumed_units = ConsumedUnit.all
+    @consumed_units = ConsumedUnit.all.order('created_at DESC')
   end
 
   # GET /consumed_units/1

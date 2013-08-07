@@ -1,0 +1,7 @@
+<div class="consumable-objects-buttons" >
+	<% ConsumableObject.all.each do |obj| %>
+	   <div class="consumable-object-button">
+ 	     <%= link_to "#{obj.name}", consumed_units_path(:consumed_unit => {:unit => obj.unit, :amount => obj.amount, :consumable_type_id => obj.consumable_type.id, :consumable_object_id => obj.id}), :method => :post, :id => "consumable-object #{obj.name}" %>
+ 	   </div>
+	<% end %>
+</div>

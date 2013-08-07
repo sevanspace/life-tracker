@@ -20,8 +20,8 @@
     <%= f.text_field :unit %>
   </div>
   <div class="field">
-    <%= f.label :consumable_type %><br>
-    <%= f.text_field :consumable_type %>
+    <%= f.label :consumable_type_id %><br>
+    <%= f.collection_select(:consumable_type_id, ConsumableType.all, :id, :name, {include_blank: true}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

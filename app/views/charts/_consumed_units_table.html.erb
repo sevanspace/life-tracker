@@ -1,0 +1,25 @@
+<% max_to_display = 10 %>
+
+<div class="consumed-units-table">
+	<div class="all-consumed-units">
+		<table>
+			<tr>
+				<td>Type</td>
+				<td>Amount</td>
+				<td>Unit</td>
+				<td>Time</td>
+				<td>Delete</td>
+			</tr>
+			<% ConsumedUnit.all.order('created_at DESC').take(max_to_display).each do |unit| %>
+			<tr>
+				<td><%= unit.consumable_type.name %></td>
+				<td><%= unit.amount %></td>
+				<td><%= unit.unit %></td>
+				<td><%= unit.created_at.in_time_zone('Central Time (US & Canada)') %></td>
+				<td><%= link_to "X", unit, method: :delete%></td>
+			</tr>
+			<% end %>			
+		</table>
+	</div>
+    <%= link_to "Show all", consumed_units_path %>
+</div>

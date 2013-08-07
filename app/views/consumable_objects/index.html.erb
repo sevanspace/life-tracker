@@ -3,9 +3,10 @@
 <table>
   <thead>
     <tr>
+      <th>Type</th>
       <th>Amount</th>
       <th>Unit</th>
-      <th>Consumable type</th>
+      <th>Time</th>
       <th></th>
       <th></th>
       <th></th>
@@ -15,9 +16,10 @@
   <tbody>
     <% @consumable_objects.each do |consumable_object| %>
       <tr>
+        <td><%= consumable_object.consumable_type.name %></td>
         <td><%= consumable_object.amount %></td>
         <td><%= consumable_object.unit %></td>
-        <td><%= consumable_object.consumable_type %></td>
+        <td><%= consumable_object.created_at.in_time_zone('Central Time (US & Canada)') %></td>
         <td><%= link_to 'Show', consumable_object %></td>
         <td><%= link_to 'Edit', edit_consumable_object_path(consumable_object) %></td>
         <td><%= link_to 'Destroy', consumable_object, method: :delete, data: { confirm: 'Are you sure?' } %></td>
