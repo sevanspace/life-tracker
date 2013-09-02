@@ -1,0 +1,10 @@
+<h1>Rescue Time Charts</h1>
+<div class="rescue-time-charts">
+	<% RescueTimeChart.all.each do |rct| %>
+	    <% if rct.show %>
+	        <%= raw(process_rescue_time_script(rct)) %>
+	    <% end %>
+	<% end %>
+</div>
+
+<br><%= link_to 'New RescueTimeChart', new_rescue_time_chart_path %>
