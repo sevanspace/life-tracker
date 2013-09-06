@@ -8,6 +8,8 @@ LifeTracker::Application.routes.draw do
 
   resources :dashboards
 
+  resources :activities
+
   root 'main#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
