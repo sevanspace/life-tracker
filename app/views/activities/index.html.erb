@@ -5,6 +5,7 @@
     <tr>
       <th>Name</th>
       <th>Color</th>
+      <th>Parent</th>
       <th></th>
       <th></th>
       <th></th>
@@ -16,6 +17,9 @@
       <tr>
         <td><%= activity.name %></td>
         <td><%= activity.color %></td>
+        <td><% if activity.parent %>
+          <%= activity.parent.name %>
+        <% end %></td>
         <td><%= link_to 'Show', activity %></td>
         <td><%= link_to 'Edit', edit_activity_path(activity) %></td>
         <td><%= link_to 'Destroy', activity, method: :delete, data: { confirm: 'Are you sure?' } %></td>

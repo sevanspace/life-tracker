@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :activity %><br>
-    <%= f.collection_select(:activity_id, Activity.all, :id, :name, {include_blank: true}) %>
+    <%= f.collection_select(:parent_id, Activity.all, :id, :name, {include_blank: true}) %>
     <%= link_to 'New Activity', new_activity_path %>
   </div>
 

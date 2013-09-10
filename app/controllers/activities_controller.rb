@@ -1,6 +1,8 @@
 class ActivitiesController < ApplicationController
   before_action :set_activity, only: [:show, :edit, :update, :destroy]
 
+  #TODO: for the form, we want to get all the activities that have no parent activity
+
   # GET /activities
   # GET /activities.json
   def index
@@ -20,6 +22,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1/edit
   def edit
+    @sub_activities = Activity.available_parents
   end
 
   # POST /activities
@@ -70,6 +73,6 @@ class ActivitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def activity_params
-      params.require(:activity).permit(:name, :color)
+      params.require(:activity).permit(:name, :color, :parent_id)
     end
 end

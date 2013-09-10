@@ -3,9 +3,9 @@
 one:
   name: MyString
   color: MyString
-  activity_id: 
+  parent_id: 
 
 two:
   name: MyString
   color: MyString
-  activity_id: 
+  parent_id: 

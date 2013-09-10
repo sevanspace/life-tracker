@@ -46,3 +46,6 @@ end
 
 #add twitter bootstrap
 gem 'bootstrap-sass'
+
+# Use acts_as_tree_rails3 to add self-referential tree structure to model
+gem 'acts_as_tree_rails3'
