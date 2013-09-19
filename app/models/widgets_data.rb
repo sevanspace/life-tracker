@@ -40,7 +40,9 @@ class WidgetsData
 	end
 
 	def units_consumed_today
-		@units_consumed_today ||= ConsumedUnit.all.select {|cu| time_created(cu).day == Date.today.day && time_created(cu).month == Date.today.month && time_created(cu).year == Date.today.year}.sort_by! {|c| c.created_at}
+		if ConsumedUnit.count > 0
+			@units_consumed_today ||= ConsumedUnit.all.select {|cu| time_created(cu).day == Date.today.day && time_created(cu).month == Date.today.month && time_created(cu).year == Date.today.year}.sort_by! {|c| c.created_at}
+		end
 	end
 
 	def consumed_today
