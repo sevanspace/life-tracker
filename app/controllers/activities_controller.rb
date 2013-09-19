@@ -22,7 +22,7 @@ class ActivitiesController < ApplicationController
 
   # GET /activities/1/edit
   def edit
-    @sub_activities = Activity.available_parents
+#    @sub_activities = Activity.available_parents
   end
 
   # POST /activities
