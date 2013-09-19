@@ -114,6 +114,7 @@ class WidgetsData
 			t = time_created(ConsumedUnit.all.order('created_at DESC').last)
 		else
 			t = Time.zone.now
+		end
 		return {:year => t.year, :month => t.month, :day => t.day}
 	end
 
