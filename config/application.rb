@@ -2,8 +2,8 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
-#Heroku will precompile assets
-config.assets.initialize_on_precompile = false
+#Heroku will precompile assets, or not?
+#config.assets.initialize_on_precompile = false
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
