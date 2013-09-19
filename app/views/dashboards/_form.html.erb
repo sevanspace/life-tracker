@@ -37,7 +37,7 @@
 
 		<%# Dashboard.available_widgets.each do |id, name| %>
 		    
-
+		 <% if @widgetts %>
 
 		   <% Dashboard.available_widgets.each do |key, name| %>
 		       <p><%= name %></p>
@@ -48,7 +48,7 @@
 		       <%#= f.check_box :widgets, {}, :checked_value => key %>
 		   <% end %>
 		
-		<%# end %>
+		<% end %>
 
 
 		<% if false #@dashboard.available_widgets.count > 1 %>
