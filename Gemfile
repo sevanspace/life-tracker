@@ -6,6 +6,11 @@ gem 'rails', '4.0.0'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 
+gem 'pg'
+gem 'taps'
+
+#use for Heroku logging into app to work on platform
+gem 'rails_12factor', group: :production
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
@@ -46,3 +51,6 @@ end
 
 #add twitter bootstrap
 gem 'bootstrap-sass'
+
+#Heroku said to do this
+ruby '2.0.0'
