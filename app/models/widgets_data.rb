@@ -72,7 +72,7 @@ class WidgetsData
 	def consumed_by_hour (type)
 		result = []
 		for hr in 0..24
-			total = ConsumedUnit.all.select {|cu| cu.consumable_type.name == type && time_created(cu).hour == hr}
+			total = (ConsumedUnit.count > 0) ? ConsumedUnit.all.select {|cu| cu.consumable_type.name == type && time_created(cu).hour == hr} : 0
 			result[hr] = total.count
 		end
 		result
@@ -88,28 +88,32 @@ class WidgetsData
 
 	def consumed_by_day (type)
 		result = {}
+		if ConsumedUnit.count > 0
+			ConsumedUnit.all.select{|cu| cu.consumable_type.name == type}.each do |cu|
+				year = time_created(cu).year
+				month = time_created(cu).month
+				day = time_created(cu).day
 
-		ConsumedUnit.all.select{|cu| cu.consumable_type.name == type}.each do |cu|
-			year = time_created(cu).year
-			month = time_created(cu).month
-			day = time_created(cu).day
-
-			unless result[year]
-				result[year] = {}
+				unless result[year]
+					result[year] = {}
+				end
+				unless result[year][month]
+					result[year][month] = {}
+				end
+				unless result[year][month][day]
+					result[year][month][day] = 0
+				end
+				result[year][month][day] += 1
 			end
-			unless result[year][month]
-				result[year][month] = {}
-			end
-			unless result[year][month][day]
-				result[year][month][day] = 0
-			end
-			result[year][month][day] += 1
 		end
 		result
 	end
 
 	def first_date_consumed
-		t = time_created(ConsumedUnit.all.order('created_at DESC').last)
+		if ConsumedUnit.count > 0 
+			t = time_created(ConsumedUnit.all.order('created_at DESC').last)
+		else
+			t = Time.zone.now
 		return {:year => t.year, :month => t.month, :day => t.day}
 	end
 
