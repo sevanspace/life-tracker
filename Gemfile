@@ -55,5 +55,9 @@ gem 'bootstrap-sass'
 # Use acts_as_tree_rails3 to add self-referential tree structure to model
 gem 'acts_as_tree_rails3'
 
+# Use Devise for user Authentication
+#gem 'devise' <-- deprecated; use the following for rails 4:
+gem 'devise'#, github: 'plataformatec/devise', branch: 'rails4'
+
 #Heroku said to do this
 ruby '2.0.0'

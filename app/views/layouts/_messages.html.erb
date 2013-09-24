@@ -3,6 +3,8 @@
     <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
       <a class="close" data-dismiss="alert">&#215;</a>
       <%= content_tag :div, msg, :id => "flash_#{name}" %>
+      <!-- THIS MIGHT BE NEEDED for Devise  <p class="notice"><%= notice %></p>
+       <p class="alert"><%= alert %></p> !-->
     </div>
   <% end %>
 <% end %>

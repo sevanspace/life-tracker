@@ -1,5 +1,6 @@
 LifeTracker::Application.routes.draw do
 
+  devise_for :users
   resources :rescue_time_charts
 
   resources :consumable_types
